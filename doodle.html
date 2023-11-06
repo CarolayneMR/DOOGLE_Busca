@@ -2,14 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Buscador de URLs</title>
+    <title>Doodle iahu</title>
+    <link rel="stylesheet" href="doodle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>
-    <label for="inputValor">Digite um valor para buscar:</label>
-    <input type="text" id="inputValor">
-    <button id="buscarButton">Buscar</button>
-    <p id="resultado">Resultado da busca:</p>
 
+<div class="umalinha"></div>
+<body>
+    <div class="box">
+        <img src="doodle.png" alt="Doodle" class="doodle">
+        <div class="alinha">
+            <div class="input-container">
+                <input type="text" id="inputValor" placeholder="Digite um site para buscar">
+                <span class="icon">
+                    <i class="fas fa-search"></i> 
+                </span>
+            </div>
+            <button class="btn" id="buscarButton">Pesquisar</button>
+        </div>
+        <div class="alinha">
+            <span class="resultado" >Resultado da busca:</span> 
+            <span class="" id="resultado"></span> <!-- Editar dps, trocar corzinha -->
+        </div>
+    </div>
+    
     <script src="arveres.js"></script>
+
+    <div class="rodape">
+        <p>Desenvolvido por: Kerou & Iain</p>
+    </div>
 </body>
 </html>
