@@ -1,23 +1,31 @@
 class Nodin {
-    constructor(valor) {
+    constructor(valor, letras) {
         this.valor = valor;
+        this.letras = letras;
         this.esquerda = null;
         this.direita = null;
     }
 
-    buscarAqui(entrada){
-       // return entrada.includes(this.valor) ? this.valor : null;
-        return this.valor.includes(entrada) ? this.valor : null;
+    buscarAqui(entrada) {
+        if (this.letras) {
+            for (let i = 0; i < this.letras.length; i++) {
+                if (this.letras[i] === entrada) {
+                    return this.valor;
+                }
+            }
+        }
+        return null;
     }
 }
+
 
 class Arvore {
     constructor() {
         this.raiz = null;
     }
 
-    inserir(valor) {
-        const novoNo = new Nodin(valor);
+    inserir(valor, letras) {
+        const novoNo = new Nodin(valor, letras);
 
         if (this.raiz === null) {
             this.raiz = novoNo;
@@ -42,39 +50,48 @@ class Arvore {
         }
     }
 
-    buscarLa(no,valor){
-        if(no === null){
-            return null
+    buscarLa(no, letra) {
+        if (no === null) {
+            return null;
         }
 
-
-        if (no.buscarAqui(valor)) {
-            if(no.valor == 'arveres'){
-                return "www.youtube.com/watch?v=j6q4FC_g6d0"
+        if (no.buscarAqui(letra)) {
+            if (this.verificarArveres(no.letras)) {
+                return "www.youtube.com/watch?v=j6q4FC_g6d0";
             }
             return no.valor;
         } else {
-            const esquerda = this.buscarLa(no.esquerda, valor);
-            const direita = this.buscarLa(no.direita, valor);
+            const esquerda = this.buscarLa(no.esquerda, letra);
+            const direita = this.buscarLa(no.direita, letra);
             return esquerda || direita;
-            
         }
     }
 
+    verificarArveres(letras) {
+        for (let i = 0; i < letras.length; i++) {
+            if (letras[i] === 'arveres') {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+// Restante do seu código permanece igual
+
 
 
 
 var doodle = new Arvore()
 
 //adicionar sitios 
-doodle.inserir('facebook.com')
-doodle.inserir('uol.com')
-doodle.inserir('google.com')
-doodle.inserir('github.com')
-doodle.inserir('youtube.com')
+doodle.inserir('facebook', ['face', 'facebook','fa','zuckeberg otario'])
+doodle.inserir('uol', ['uo', 'valetudo', 'uol', 'ol', 'bol'])
+doodle.inserir('google', ['rival', 'inimigo', 'google', 'mentiroso'])
+doodle.inserir('github'['git', 'hub', 'github', 'dighub', 'aquele site'])
+doodle.inserir('youtube', ['videos', 'youtube', 'ytb', 'youtub', 'you.be', 'you'])
 //arveres = "https://www.youtube.com/watch?v=j6q4FC_g6d0"
-doodle.inserir('arveres')
+doodle.inserir('arveres', ['arvores', 'arveres', 'jesus', 'jardineiro'])
 
 console.log(doodle)
 
@@ -88,7 +105,7 @@ document.getElementById('buscarButton').addEventListener('click', () => {
     if (link) {
         resultado.textContent = `URL encontrada: ${link}`;
         // Redirecionar para a URL encontrada
-        window.location.href = `http://${link}`;
+        window.location.href = `http://${link}.com`;
     
     } else {
         resultado.textContent = 'Nenhuma URL correspondente encontrada';
